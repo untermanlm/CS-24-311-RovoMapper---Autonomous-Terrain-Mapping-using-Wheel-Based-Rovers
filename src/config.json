@@ -1,0 +1,93 @@
+{
+    "initialize.py": {
+        "runtime": 0,
+        "use_testbed": false,
+        "test_old": false,
+        "old_data": {
+            "type": "json",
+            "client_id": "old_data_handler",
+            "topic_pub": "Data/raw_gdx",
+            "path": "figure_eight_comparison.log",
+            "hz": 50
+        },
+        "should_log_output": true,
+        "log_data": {
+            "client_id": "data_log_handler",
+            "topic_sub": "Data/location",
+            "log_path": "gdx_circle_test_recent.log"
+        }
+    },
+    "logger_process.py": {
+        "config": {
+            "version": 1,
+            "formatters": {
+                "detailed": {
+                    "class": "logging.Formatter",
+                    "format": "%(asctime)s %(levelname)-8s %(processName)-20s %(message)s"
+                }
+            },
+            "handlers": {
+                "console": {
+                    "class": "logging.StreamHandler",
+                    "level": "INFO",
+                    "formatter": "detailed"
+                },
+                "file": {
+                    "class": "logging.FileHandler",
+                    "filename": "app_log.log",
+                    "mode": "w",
+                    "formatter": "detailed"
+                }
+            },
+            "root": {
+                "level": "DEBUG",
+                "handlers": ["console", "file"]
+            }
+        }
+    },
+    "linear_to_location_msg_handler.py": {
+        "client_id": "linear_loc_handler",
+        "topic_sub": "Data/linear_gdx",
+        "topic_pub": "Data/location",
+        "testbed_axle_length": 148.0,
+        "chair_axle_length": 560.0,
+        "filter_version": 0
+    },
+    "raw_to_linear_msg_handler.py": {
+        "client_id": "raw_linear_handler",
+        "topic_sub": "Data/raw_gdx",
+        "topic_pub": "Data/linear_gdx",
+        "testbed_wheel_diameter": 58.0,
+        "chair_wheel_diameter": 609.6,
+        "filter_version": 0
+    },
+    "sensor_to_raw_msg_handler.py": {
+        "client_id": "sensor_raw_handler",
+        "topic_sub": "Debug/info",
+        "topic_pub": "Data/raw_gdx",
+        "testbed_l_mac": "GDX-RMS 0L101276",
+        "testbed_r_mac": "GDX-RMS 0L1013L7",
+        "chair_l_mac": "GDX-RMS 0L101276",
+        "chair_r_mac": "GDX-RMS 0L1013L7"
+    },
+    "visualization_PyQt.py": {
+        "client_id": "gui",
+        "topic_sub": "Data/location",
+        "topic_pub": "Debug/info",
+        "broker_host": "127.0.0.1",
+        "port": 1883,
+        "map_path": "app/Visualization/Assets/black_infinity.png",
+        "graph_title": "CS.24-311",
+        "gui_title": "Plotter",
+        "multi_sensor": true,
+        "min_x": -500,
+        "max_x": 500,
+        "min_y": -500,
+        "max_y": 500,
+        "queue_length": 500,
+        "sample_data_mod": 3,
+        "draw_line_frequency": 100,
+        "show_line": true,
+        "show_marker": true
+    }
+}
