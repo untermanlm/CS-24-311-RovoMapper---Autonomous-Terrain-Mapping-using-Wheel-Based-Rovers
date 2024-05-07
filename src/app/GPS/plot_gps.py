@@ -3,7 +3,12 @@ import gmplot
 from datetime import datetime
 import pandas as pd
 
-api_key = "AIzaSyBSdYEwAqyC_xHnOQ5V4EMNdBYfQh9tpTU"
+
+# For this to work, you need a functioning api key from Google Maps!
+# import json
+# with open("secrets.json", "r") as file:
+    # secrets = json.loads(file.read())
+# api_key = secrets["api_key"]
 
 df = pd.read_csv('output.csv')
 lat = df.iloc[:, 0].to_numpy()
